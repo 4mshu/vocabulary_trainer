@@ -3,6 +3,7 @@ import './App.css';
 import Hints from './components/Hints';
 import WordCard from './components/WordCard';
 import { words } from './components/words';
+import Options from './components/Options';
 
 let length = words.length;
 const randomNumber = Math.floor(Math.random() * (length));
@@ -24,6 +25,7 @@ function App() {
   return (
     <>
       <WordCard definition={definition} handleHints={handleHints}/>
+      <Options rightWord={rightWord} />
       {hints && <Hints synonyms={synonyms} />}
       
     </>
