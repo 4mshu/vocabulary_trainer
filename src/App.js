@@ -4,18 +4,21 @@ import Hints from './components/Hints';
 import WordCard from './components/WordCard';
 import { words } from './components/words';
 import Options from './components/Options';
+import Sentences from './components/Sentences';
 
 let length = words.length;
 const randomNumber = Math.floor(Math.random() * (length));
 let rightWord = words[randomNumber].word
 let definition = words[randomNumber].definition
 let synonyms = words[randomNumber].synonyms
+let sentences = words[randomNumber].sentences
 
 
 
 
 function App() {
   const [hints, setHints] = useState(false)
+  const [sentenceToggle, setSentenceToggle] = useState(true)
   
   function handleHints () {
     setHints(hint=>!hint);
@@ -24,8 +27,10 @@ function App() {
 
   return (
     <>
+      
       <WordCard definition={definition} handleHints={handleHints}/>
-      <Options rightWord={rightWord} />
+      <Options rightWord={rightWord} setSentenceToggle={setSentenceToggle}/>
+      {sentenceToggle && <Sentences sentences={sentences} />}
       {hints && <Hints synonyms={synonyms} />}
       
     </>
