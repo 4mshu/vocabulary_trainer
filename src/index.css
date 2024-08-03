@@ -4,14 +4,11 @@
 
 body {
     background: linear-gradient(135deg, slategray 10%, lightgray 90%); 
-    background-attachment: fixed; 
+    
     font-family: 'Arial, sans-serif';
     color: white; 
     margin: 0; 
     padding: 0; 
     height: 100vh; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
   }
   

@@ -5,6 +5,7 @@ import WordCard from './components/WordCard';
 import { words } from './components/words';
 import Options from './components/Options';
 import Sentences from './components/Sentences';
+import Buttons from './components/Buttons';
 
 let length = words.length;
 const randomNumber = Math.floor(Math.random() * (length));
@@ -18,21 +19,24 @@ let sentences = words[randomNumber].sentences
 
 function App() {
   const [hints, setHints] = useState(false)
-  const [sentenceToggle, setSentenceToggle] = useState(true)
+  const [sentenceToggle, setSentenceToggle] = useState(false)
   
   function handleHints () {
     setHints(hint=>!hint);
   }
 
+  function handleSentenceToggle () {
+    setSentenceToggle(sentenceToggle => !sentenceToggle)
+  }
+
 
   return (
     <>
-      
-      <WordCard definition={definition} handleHints={handleHints}/>
-      <Options rightWord={rightWord} setSentenceToggle={setSentenceToggle}/>
-      {sentenceToggle && <Sentences sentences={sentences} />}
+      <Options rightWord={rightWord} />
+      <WordCard definition={definition}/>
+      <Buttons handleHints={handleHints} handleSentenceToggle={handleSentenceToggle} />
       {hints && <Hints synonyms={synonyms} />}
-      
+      {sentenceToggle && <Sentences sentences={sentences} />}
     </>
 
   );
