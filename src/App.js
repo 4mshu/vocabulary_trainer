@@ -6,6 +6,7 @@ import { words } from './components/words';
 import Options from './components/Options';
 import Sentences from './components/Sentences';
 import Buttons from './components/Buttons';
+import HeaderMessage from './components/HeaderMessage';
 
 let length = words.length;
 const randomNumber = Math.floor(Math.random() * (length));
@@ -32,11 +33,14 @@ function App() {
 
   return (
     <>
+      <HeaderMessage/>
       <Options rightWord={rightWord} />
       <WordCard definition={definition}/>
       <Buttons handleHints={handleHints} handleSentenceToggle={handleSentenceToggle} />
-      {hints && <Hints synonyms={synonyms} />}
-      {sentenceToggle && <Sentences sentences={sentences} />}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div>{hints ? <Hints synonyms={synonyms} /> : <div></div>}</div>
+  <div>{sentenceToggle ? <Sentences sentences={sentences} /> : <div></div>}</div>
+</div>
     </>
 
   );

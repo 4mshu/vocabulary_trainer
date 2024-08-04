@@ -4,11 +4,17 @@ export default function (props) {
     const {synonyms} = props
   return (
   
-    <fieldset className='capitalize'>
-      <legend className=''>
+    <fieldset className='capitalize mx-8'>
+      <legend className='text-2xl text-blue-200'>
         Synonyms
       </legend>
-    {synonyms.join(" ")}
+      <ul className='mx-2'>
+        {synonyms.map((word,i) => {
+          return (
+            <li>{i+1}. {word}</li>
+          )
+        })}
+      </ul>
   </fieldset>
 
   )
